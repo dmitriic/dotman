@@ -1,0 +1,5 @@
+brew install neovim
+brew install tig
+brew install gawk
+apt --version
+* echo "everywhere!"

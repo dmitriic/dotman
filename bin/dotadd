@@ -1,0 +1,20 @@
+#! /bin/bash
+
+DOTDIR=$(readlink -f ~/dotfiles)
+
+SOURCE=$1
+
+if [ -h $SOURCE ]; then
+  echo "unable to add links"
+  exit 1
+fi
+
+TARGET=${1#.}
+
+mvl "$SOURCE" "$DOTDIR/$TARGET"
+
+pushd $DOTDIR
+git add $TARGET
+git commit -am "added $TARGET"
+git push
+popd

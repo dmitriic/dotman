@@ -1,0 +1,7 @@
+export PATH=$PATH:$(readlink -f ~)/bin
+
+if [ -d ~/.config/bash_autoload ]; then
+  for script in ~/.config/bash_autoload*; do
+    . $script
+  done
+fi

@@ -1,0 +1,9 @@
+#! /bin/bash
+
+dotdir=$(readlink -f ~/dotfiles)
+
+pushd $dotdir
+git add *
+git commit -am "dotpush by $(whoami) from $(hostname)"
+git push
+popd

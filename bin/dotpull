@@ -1,0 +1,10 @@
+#! /bin/bash
+
+dotdir=$(readlink -f ~/dotfiles)
+
+pushd $dotdir
+git stash
+git pull
+git stash pop
+. $dotdir/install.sh
+popd

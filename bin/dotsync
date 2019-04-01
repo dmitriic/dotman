@@ -1,0 +1,13 @@
+#! /bin/bash
+
+dotdir=$(readlink -f ~/dotfiles)
+
+pushd $dotdir
+git stash
+git pull
+git stash pop
+git add *
+git commit -am "dotsync by $(whoami) from $(hostname)"
+git push
+. $dotdir/install.sh
+popd

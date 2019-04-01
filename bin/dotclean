@@ -1,0 +1,8 @@
+#! /bin/bash
+
+dotdir=$(readlink -f ~/dotfiles)
+
+pushd $dotdir
+git reset --hard
+. $dotdir/install.sh
+popd
