@@ -1,5 +1,10 @@
-brew install neovim
-brew install tig
-brew install gawk
-apt --version
-* echo "everywhere!"
+#
+# This file can be used to install applications across all environments managed by your dotman
+# Dotman will automatically detect proper package manager and execute only 
+# lines that start either with *, %, or with the name of detected package manager
+# you can also substitute installed package manager name by using % symbol
+# examples: 
+# brew install neovim
+# apt install neovim
+# * echo "everywhere!"
+# % install tig

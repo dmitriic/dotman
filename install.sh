@@ -1,7 +1,16 @@
 #! /bin/bash
 
 set -e
-pushd $(readlink -f ~/dotfiles)
+self=$(readlink -f $0)
+if [ -z $DOTDIR ]; then 
+  DOTDIR=$(dirname $self)
+  read -p "Install into $DOTDIR (y/N)? " choice
+  case "$choice" in
+    y|Y ) export DOTDIR=$DOTDIR ;;
+    * ) echo "ok, exiting." && exit 1 ;;
+  esac
+fi
+pushd $DOTDIR
 
 HOME=$(readlink -f ~)
 echo "installing into: $HOME"
@@ -109,6 +118,8 @@ function apply_profile {
         local ismend="${line#$mend}"
         if [ "$ismend" != "$line" ]; then
           cat $1 >> $patched
+          echo "# dotman directory"
+          echo "export DOTDIR=$DOTDIR"
           echo "${line}" >> $patched
           patchstatus=2
         fi
