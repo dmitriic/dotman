@@ -1,6 +1,7 @@
 #! /bin/bash
 
-DOTDIR=$(readlink -f ~/dotfiles)
+self=$(readlink -fn $0)
+dotdir=$(dirname $(dirname $0))
 
 SOURCE=$1
 
@@ -11,9 +12,9 @@ fi
 
 TARGET=${1#.}
 
-mvl "$SOURCE" "$DOTDIR/$TARGET"
+mvl "$SOURCE" "$dotdir/$TARGET"
 
-pushd $DOTDIR
+pushd $dotdir
 git add $TARGET
 git commit -am "added $TARGET"
 git push
