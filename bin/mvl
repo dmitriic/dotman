@@ -1,0 +1,14 @@
+#! /bin/bash
+
+SOURCE=$(readlink -f $1)
+TARGET=$2
+TARGET_PARENT=$2
+
+if [ ! -d $SOURCE ]; then
+  TARGET_PARENT=$(dirname $TARGET)
+fi
+
+mkdir -p $TARGET_PARENT
+mv $SOURCE $TARGET
+TARGET=$(readlink -f $TARGET)
+ln -s $TARGET $SOURCE
