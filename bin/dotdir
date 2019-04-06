@@ -1,0 +1,3 @@
+#! /bin/bash
+
+echo $(dirname $(dirname $(readlink -fn $0)))
